@@ -1,0 +1,52 @@
+{% if teacher %}
+<h3>{{ teacher.name }}</h3>
+{% endif %}
+
+{% if teachers %}
+<table class="table">
+	<tbody>
+		{% for row in teachers %}
+		<tr>
+			<td> {{ row.name }} </td>
+			<td> <a name='edit[]' class="btn btn-info btn-edit" id={{ row.id }} >edit</a> </td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+{% if inds %}
+
+<!-- {% for row in res %}
+{% for col in row %}
+<p>{% for r in col %}
+{{ r }}
+{% endfor %}</p>
+{% endfor %}
+{% endfor %} -->
+
+
+{% for row in res %}
+{% for col in row %}
+<p>{{ col[3] }}</p>
+{% endfor %}
+{% endfor %}
+
+
+<!-- <table class="table">
+	<tbody>
+		{% for row in inds %}
+		<tr id= {{ row[0] }} >
+			{% for col in row %}
+			<td> <h4>{{ col }}</h4> </td>
+			{% endfor %}	
+			<td><input type="text" name="addrateval[]" placeholder="0" value= {% for rr in res %} {% if row[0] == rr[0] %} {{ rr[1] }} {% endif %} {% endfor %} ></td>
+			<td><input type="button" class="btn" name="addratebtn[]ы" value="OK"></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table> -->
+{% endif %}
+
+
+
+

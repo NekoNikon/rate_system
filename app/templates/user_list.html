@@ -1,0 +1,47 @@
+<table class="table">
+	<tbody>
+		{% for row in records %}
+		<tr>
+			<td><input type="text" value=" {{row[1]}} "></td>
+			<td>
+				<select>
+					<option {% if row[2] == 0 %} selected {% endif %} value="0">Admin</option>
+					<option {% if row[2] == 1 %} selected {% endif %} value="1">Methodist</option>
+					<option {% if row[2] == 2 %} selected {% endif %} value="2">Head Teacher</option>
+				</select>
+			</td>
+			<td><input type="button" value="EDIT" id={{ row[0] }} class="edit_user"></td>
+			<td><input type="button"  value="DELETE" id={{ row[0] }} class="del_user"></td> 
+		</tr> 
+		{% endfor %}
+	</tbody>
+</table>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">add user</button>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+    </div>
+    <div class="modal-body">
+    <form name="reg">
+      <input type="text" name="login" id=login autocomplete="false">
+      <input type="password" name="password" id=password autocomplete="false">
+      <br>
+      <select name="priv">
+      	<option value="1">methodis</option>
+      	<option value="2">head teacher</option>
+      </select>
+     </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal" id="send_data_user">Save</button>
+    </div>
+
+  </div>
+</div>
+</div>
