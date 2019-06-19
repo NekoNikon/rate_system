@@ -6,6 +6,8 @@ main = Blueprint('main' , __name__  , static_folder='static')
 
 @main.route('/', methods=['GET','POST'])
 def index():
+    session['username'] = 'admin'
+    session['priv'] = 0
     # rec = rate.query.all()
     # print(rec)
     # for row in rec:

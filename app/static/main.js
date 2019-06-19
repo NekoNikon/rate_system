@@ -4,12 +4,12 @@ function checkSession() {
         if (XHR.readyState==4 && XHR.status==200) {
             var d = JSON.parse(XHR.responseText);
             console.log(d);
-            
+
             if (d['session']) {
                 load_side();
-                
+
                 return true;
-            }  
+            }
             return false;
         }
     }
@@ -35,16 +35,15 @@ function load_side() {
 }
 
 window.onload = function() {
-    var logoutbtn = document.getElementById('logout');
-    logoutbtn.addEventListener('click' , logout);
+
     editrate = document.getElementById('edit_rate');
-    
+
     console.log('loaded');
     ajaxGet();
     load_guest_content();
-    
+
     if (checkSession()==true) {
-        
+
     }
 }
 
@@ -54,7 +53,7 @@ function load_auth_user() {
         if(XHR.readyState==4 && XHR.status==200) {
             document.getElementById('main').innerHTML = XHR.responseText;
             console.log('herrr');
-            
+
             load_side();
         }
     }
@@ -84,12 +83,12 @@ function ajaxGet() {
     var XHR = new XMLHttpRequest();
     XHR.onreadystatechange = function() {
         console.log(XHR.readyState);
-        if (XHR.readyState==4 && XHR.status == 200) {  
+        if (XHR.readyState==4 && XHR.status == 200) {
             document.getElementById('main').innerHTML = XHR.responseText;
             var loginbtn = document.getElementById('loginbtn');
             if(loginbtn) loginbtn.addEventListener('click' , login);
             // console.log(loginbtn);
-            
+
         }
     }
     XHR.open('POST', '/auth');
@@ -126,8 +125,8 @@ function searchTeacher() {
     XHR.open('POST' , '/view_rate');
     XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     console.log(typeof( code.value));
-    
-    XHR.send('code='+code.value);    
+
+    XHR.send('code='+code.value);
 }
 
 
@@ -169,7 +168,7 @@ function edit_rate_page() {
             document.getElementById('main_work').innerHTML = XHR.responseText;
             var editteacher = document.getElementsByClassName('btn-edit');
             // editteacher.addEventListener('click' , load_rates);
-            
+
             for(var i = 0; i<editteacher.length ; i++)
                 editteacher[i].addEventListener('click' , load_rates , editteacher[i].id);
         }
@@ -187,6 +186,8 @@ function login() {
             load_side();
             var editrate = document.getElementById('edit_rate');
             editrate.addEventListener('click' , edit_rate_page);
+            var logoutbtn = document.getElementById('logout');
+            logoutbtn.addEventListener('click' , logout);
         }
     }
     XHR.open('POST' , '/login');
@@ -203,8 +204,8 @@ function inds_rate_page() {
     var XHR = new XMLHttpRequest();
     XHR.onreadystatechange = function(){
         if(XHR.readyState==4 && XHR.status==200) {
-            
-           
+
+
             console.log(JSON.parse(XHR.responseText));
             viewinds(JSON.parse(XHR.responseText));
         }
@@ -251,7 +252,7 @@ function users_rate_page() {
 }
 
 function edit_user(id , login  , password , priv ) {
-    
+
 };
 
 function add_user () {
@@ -288,11 +289,11 @@ function del_user(id) {
         if(XHR.readyState==4 && XHR.status==200) {
             users_rate_page();
             console.log(id);
-            
+
         }
     }
     XHR.open('POST','/del_user');
     XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    
+
     XHR.send();
 }

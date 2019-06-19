@@ -1,0 +1,18 @@
+@font-face{
+    font-family: "Roboto-Light";
+    src: url("Roboto/Light/Roboto-Light.eot");
+    src: url("Roboto/Light/Roboto-Light.eot?#iefix")format("embedded-opentype"),
+         url("Roboto/Light/Roboto-Light.woff")format("woff"),
+         url("Roboto/Light/Roboto-Light.ttf")format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face{
+    font-family: "Roboto-Thin";
+    src: url("Roboto/Thin/Roboto-Thin.eot");
+    src: url("Roboto/Thin/Roboto-Thin.eot?#iefix")format("embedded-opentype"),
+         url("Roboto/Thin/Roboto-Thin.woff")format("woff"),
+         url("Roboto/Thin/Roboto-Thin.ttf")format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

@@ -1,0 +1,541 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Рейтинг преподавателя</title>
+    <meta name="description" content="">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="reset.css">
+
+    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Custom HTML -->
+    <div class="firstpage">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="top">
+                        <div class="center">
+                            <h1 class="sitename">
+                                Рейтинг преподавателя
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="left_main d-flex flex-column align-items-center">
+
+                        <section class="form-login d-flex flex-column align-items-center">
+                            <input type="text" id="login" name="login" placeholder="Введите логин...">
+                            <input type="password" id="pass" name="password" placeholder="Введите пароль...">
+
+                            <div class="button d-flex align-items-center">
+                                Подтвердить
+                            </div>
+                        </section>
+
+                        <div class="menu">
+                            <div class="container">
+                                <div class="row flex-column align-items-center justify-content-lg-center flex-lg-row">
+                                    <div class="element col col-lg-2">
+                                        Пункт-1
+                                    </div>
+                                    <div class=" element col-md-auto">
+                                        Пункт-2
+                                    </div>
+                                    <div class=" element col-md-auto">
+                                        Пункт-3
+                                    </div>
+                                    <div class=" element col-md-auto">
+                                        Пункт-4
+                                    </div>
+                                    <div class="element col col-lg-2">
+                                        Пункт-5
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button d-flex align-items-center">
+                            Подробнее
+                        </div>
+                        <div class="h-checkbox">
+                            <input type="checkbox" class="checkbox" id="checkbox" />
+                            <label for="checkbox">Чекбокс</label>
+                        </div>
+
+
+                        <div class="boxes">
+                            <input type="checkbox" id="box-1">
+                            <label for="box-1">Только один</label>
+
+                            <input type="checkbox" id="box-2">
+                            <label for="box-2">Использовать все</label>
+
+                            <input type="checkbox" id="box-3">
+                            <label for="box-3">Заказать пиццу</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="secondpage">
+        <!--<div class="container">
+            <div class="row">
+                <div class="col-sm d-flex justify-content-center">
+                    <div class="card">
+                        <div class="pic flex-shrink-0">
+
+                        </div>
+
+                        <p class="cardtext">
+                            Прекрасный стиль представлен на этой невероятной странице. Прекрасный стиль представлен на этой невероятной странице. Прекрасный стиль представлен на этой невероятной странице. Прекрасный стиль представлен на этой невероятной странице.
+                        </p>
+
+
+                        <div class="button4 flex-shrink-0">
+
+                            Подробнее
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm d-flex justify-content-center">
+                    <div class="card">
+                        <div class="pic flex-shrink-0">
+
+                        </div>
+
+                        <p class="cardtext">
+                            Это вторая карточка. Она нужна для того, чтобы страница не казалась пустой.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-sm d-flex justify-content-center">
+                    <div class="card">
+                        <div class="pic flex-shrink-0">
+
+                        </div>
+
+                        <p class="cardtext">
+                            На завершающей карточке написана самая основная информация о странице.
+                        </p>
+
+
+                        <div class="button4 flex-shrink-0">
+                            Подробнее
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="container">
+            <div class="col-sm">
+                <div class="search d-flex">
+                    <input type="text" id="fname" name="firstname" placeholder="Введите ваш код...">
+
+                    <div class="button d-flex align-items-center">
+                        Поиск
+                    </div>
+                </div>
+                <div class="x_panel d-none d-sm-block ">
+                    <div class="x_title">
+                        <h2 class="tablename">Рейтинг преподавателей</h2>
+                    </div>
+
+                    <div class="modal-window d-flex justify-content-end">
+                        <div class="button align-items-center" data-toggle="modal" data-target="#AddPrepodModal">
+                            Добавить преподавателя
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="AddPrepodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Добавление преподавателя</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <p> Фамилия</p>
+
+                                        <input type="text" id="fname" name="firstname" placeholder="Введите фамилию...">
+
+                                         <p> Имя</p>
+
+                                        <input type="text" id="fname" name="firstname" placeholder="Введмте имя...">
+
+                                         <p> Код</p>
+
+                                        <input type="text" id="fname" name="firstname" placeholder="Введите код...">
+
+                                         <p> Отделение</p>
+
+                                        <select id="fname" name="firstname">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="button d-flex align-items-center" data-dismiss="modal">Закрыть</div>
+                                        <div class="button d-flex align-items-center">Подтвердить</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="x_content">
+
+                        <table class="table ">
+                            <thead>
+                                <tr>
+                                    <th>Номер</th>
+                                    <th>Имя</th>
+                                    <th>Фамилия</th>
+                                    <th>Рейтинг</th>
+                                    <th>Отделение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Максим</td>
+                                    <td>Петров
+                                    </td>
+                                    <td class="rate d-flex justify-content-between ">
+
+                                        <span>5,6</span>
+
+                                        <div class="button7 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+
+
+                                    </td>
+                                    <td>номер отделения</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Антон</td>
+                                    <td>Чехов</td>
+                                    <td class="rate d-flex justify-content-between ">
+
+                                        <span>5,6</span>
+
+                                        <div class="button7 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+
+                                    </td>
+                                    <td>номер отделения</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Фёдр</td>
+                                    <td>Листов</td>
+                                    <td class="rate d-flex justify-content-between ">
+
+                                        <span>5,6</span>
+
+                                        <div class="button7 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+
+                                    </td>
+                                    <td>номер отделения</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Фёдр</td>
+                                    <td>Листов</td>
+                                    <td class="rate d-flex justify-content-between ">
+
+                                        <span>5,6</span>
+
+                                        <div class="button7 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+
+                                    </td>
+                                    <td>номер отделения</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Фёдр</td>
+                                    <td>Листов</td>
+                                    <td class="rate d-flex justify-content-between">
+
+                                        <span>5,6</span>
+
+                                        <div class="button7 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+
+                                    </td>
+                                    <td>номер отделения</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm">
+
+                <div class="modal-window d-flex justify-content-end">
+                    <div class="button align-items-center" data-toggle="modal" data-target="#EditPrepodModal">
+                        Добавить пользователя
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="EditPrepodModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Добавление пользователя</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                     <p>Логин</p>
+
+                                    <input type="text" id="fname" name="firstname" placeholder="Введите логин...">
+
+                                     <p>Пароль</p>
+
+                                    <input type="password" id="pass" name="password" placeholder="Введите пароль...">
+
+                                     <p>Фамилия</p>
+
+                                    <input type="text" id="fname" name="firstname" placeholder="Введите фамилию...">
+
+                                     <p>Имя</p>
+
+                                    <input type="text" id="fname" name="firstname" placeholder="Введите имя...">
+
+                                    <select id="fname" name="firstname">
+												<option value="admin">Администратор</option>
+												<option value="metodist">Методист</option>
+												<option value="zaved">Заведующий</option>
+											</select>
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="button d-flex align-items-center" data-dismiss="modal">Закрыть</div>
+                                    <div class="button d-flex align-items-center">Подтвердить</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x_panel d-none d-sm-block ">
+
+                    <div class="x_content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Фамилия</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th class="edit d-flex align-items-center" scope="row">Фамилия преподавателя
+
+                                        <div class="button8 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+                                    </th>
+
+                                </tr>
+
+                                <tr>
+                                    <th class="edit d-flex align-items-center" scope="row">
+                                        Фамилия преподавателя
+                                        <div class="button8 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+                                    </th>
+
+                                </tr>
+
+                                <tr>
+                                    <th class="edit d-flex align-items-center" scope="row">Фамилия преподавателя
+
+                                        <div class="button8 justify-content-center d-flex align-items-center">
+                                            Редактировать
+                                        </div>
+                                    </th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="x_panel d-none d-sm-block ">
+
+                    <div class="x_content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Фамилия</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th class="d-flex align-items-center" scope="row">Наличие категории
+                                        <div class="input3 d-flex">
+                                            <input type="text" id="fname" name="firstname" placeholder="0">
+
+                                            <div class="button7 justify-content-center d-flex align-items-center">
+                                                Добавить
+                                            </div>
+                                        </div>
+                                    </th>
+
+                                </tr>
+
+                                <tr>
+                                    <th class="d-flex align-items-center" scope="row">
+                                        Содействие трудоустройству выпускников
+                                        <div class="input3 d-flex">
+                                            <input type="text" id="fname" name="firstname" placeholder="0">
+
+                                            <div class="button7 justify-content-center d-flex align-items-center">
+                                                Добавить
+                                            </div>
+                                        </div>
+                                    </th>
+
+                                </tr>
+
+                                <tr>
+                                    <th class="d-flex align-items-center" scope="row">Участие в работе комиссий колледжа
+
+                                        <div class="input3 d-flex">
+                                            <input type="text" id="fname" name="firstname" placeholder="0">
+
+                                            <div class="button7 justify-content-center d-flex align-items-center">
+                                                Добавить
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th class="d-flex align-items-center" scope="row">Участие в творческой группе преподавателей/мастеров
+
+                                        <div class="input3 d-flex">
+                                            <input type="text" id="fname" name="firstname" placeholder="0">
+
+                                            <div class="button7 justify-content-center d-flex align-items-center">
+                                                Добавить
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th class="d-flex align-items-center" scope="row">Проведение профориентационного мероприятия
+
+                                        <div class="input3 d-flex">
+                                            <input type="text" id="fname" name="firstname" placeholder="0">
+
+                                            <div class="button7 justify-content-center d-flex align-items-center">
+                                                Добавить
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+
+<!-- <input type="text" id="tabletext" name="tableinput" placeholder="Введите данные..."> -->
