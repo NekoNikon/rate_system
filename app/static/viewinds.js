@@ -3,15 +3,15 @@ function viewinds(data) {
     var main_work =  document.getElementById('main_work');
     var count=0;
     main_work.innerHTML = '';
-    main_work.innerHTML += '<input type="text" id="name_group" size=80 placeholder="Новая группа индикаторов"><input class="btn btn-primary" type="button" id="gadd" value="Добавить"><br>';
+    main_work.innerHTML += '<div class="red d-flex justify-content-between"><input type="text" id="name_group" size=80 placeholder="Новая группа индикаторов"><div class="button d-flex justify-content-start align-items-center" id="gadd" value="Добавить"> Добавить</div></div><br>';
     for(var i = 0 ; i < data.length; i++)  {
         // main_work.innerHTML += '<div class="block_inds">';
-        main_work.innerHTML += '<h3 class="red group_id" id="g'+data[i][count][3]+'" >Раздел   <input size=80 class="green" type="text" value="' + data[i][count][4] + '"><button id="'+data[i][count][3]+'" class="btngroupind btn btn-primary">Ok</button></h3>';
-        main_work.innerHTML += '<input type="text" id="name_ind_'+data[i][count][3]+'" placeholder="новый индикатор" size="80"><input class="iadd btn btn-primary" value="Добавить индикатор" type="button" id="'+ data[i][count][3] +'"><br>';
+        main_work.innerHTML += '<h2 class="text">Раздел</h2><div class="red group_id d-flex justify-content-between" id="g'+data[i][count][3]+'" ><input size=80 class="green" type="text" value="' + data[i][count][4] + '"><div id="'+data[i][count][3]+'" class="btngroupind button d-flex justify-content-center">Ok</div></div>';
+        main_work.innerHTML += '<div class="d-flex justify-content-between"><input type="text" id="name_ind_'+data[i][count][3]+'" placeholder="новый индикатор" size="80"><div class="iadd button d-flex justify-content-center" value="Добавить индикатор" id="'+ data[i][count][3] +'">Добавить</div></div>';
         // main_work.innerHTML += '<div class="inds">';
         for(var j = 0; j < data[i].length; j++) {
             console.log(data[i].length);
-            main_work.innerHTML += '<input size=130 id="i'+data[i][count][0]+'" value="' + data[i][j][1] + '" type="text"><button id="' + data[i][j][0] + '"  class="btnind btn btn-primary">Ok</button>';
+            main_work.innerHTML += '<div class="red d-flex justify-content-between"><input size=130 id="i'+data[i][count][0]+'" value="' + data[i][j][1] + '" type="text"><div id="' + data[i][j][0] + '"  class="btnind button d-flex justify-content-center">Ok</div></div>';
             count++;
         }
         count=0;
