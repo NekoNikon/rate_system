@@ -3,7 +3,7 @@ function viewinds(data) {
     var main_work =  document.getElementById('main_work');
     var count=0;
     main_work.innerHTML = '';
-    main_work.innerHTML += '<div class="red d-flex justify-content-between"><input type="text" id="name_group" size=80 placeholder="Новая группа индикаторов"><div class="button d-flex justify-content-start align-items-center" id="gadd" value="Добавить"> Добавить</div></div><br>';
+    main_work.innerHTML += '<div class="red d-flex justify-content-start"><input type="text" id="name_group" size=80 placeholder="Новая группа индикаторов"><div class="button d-flex justify-content-start align-items-center" id="gadd" value="Добавить"> Добавить</div></div><br>';
     for(var i = 0 ; i < data.length; i++)  {
         // main_work.innerHTML += '<div class="block_inds">';
         main_work.innerHTML += '<h2 class="text">Раздел</h2><div class="red group_id d-flex justify-content-between" id="g'+data[i][count][3]+'" ><input size=80 class="green" type="text" value="' + data[i][count][4] + '"><div id="'+data[i][count][3]+'" class="btngroupind button d-flex justify-content-center">Ok</div></div>';

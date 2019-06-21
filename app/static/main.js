@@ -21,7 +21,7 @@ function load_side() {
     XHR.onreadystatechange = function() {
         if (XHR.readyState==4 && XHR.status==200) {
             document.getElementById('panel').innerHTML = XHR.responseText;
-
+            document.getElementById('logout').addEventListener('click',logout);
             document.getElementById('edit_rate').addEventListener('click' , edit_rate_page);
             document.getElementById('edit_inds').addEventListener('click' , inds_rate_page);
             // document.getElementById('edit_season').addEventListener('click' , season_rate_page);
@@ -44,6 +44,9 @@ window.onload = function() {
 
     if (checkSession()==true) {
 
+    }
+    else{
+        
     }
 }
 
@@ -85,7 +88,7 @@ function ajaxGet() {
         console.log(XHR.readyState);
         if (XHR.readyState==4 && XHR.status == 200) {
             document.getElementById('main').innerHTML = XHR.responseText;
-            var loginbtn = document.getElementById('loginbtn');
+            var loginbtn = document.getElementById('logginbtn');
             if(loginbtn) loginbtn.addEventListener('click' , login);
             // console.log(loginbtn);
 
@@ -95,22 +98,6 @@ function ajaxGet() {
     XHR.send();
 }
 
-
-
-
-
-function logout() {
-    var XHR = new XMLHttpRequest();
-    XHR.onreadystatechange = function() {
-        if(XHR.readyState==4 && XHR.status==200) {
-            document.open();
-            document.write(XHR.responseText);
-            document.close();
-        }
-    }
-    XHR.open('POST' , '/logout');
-    XHR.send();
-}
 
 function searchTeacher() {
     var code = document.getElementById('code');
@@ -177,27 +164,7 @@ function edit_rate_page() {
     XHR.send()
 }
 
-function login() {
-    var XHR = new XMLHttpRequest();
-    XHR.onreadystatechange = function() {
-        if(XHR.readyState==4 && XHR.status==200) {
-            document.getElementById('main').innerHTML = XHR.responseText;
-            // load_side();
-            load_side();
-            var editrate = document.getElementById('edit_rate');
-            editrate.addEventListener('click' , edit_rate_page);
-            var logoutbtn = document.getElementById('logout');
-            logoutbtn.addEventListener('click' , logout);
-        }
-    }
-    XHR.open('POST' , '/login');
-    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var form = document.forms['login_form'];
-    var f_login = form['f_login'];
-    var f_password = form['f_password'];
-    var strsend = 'login='+f_login.value +'&password='+f_password.value;
-    XHR.send(strsend);
-}
+
 
 function inds_rate_page() {
     document.getElementById('main_work').innerHTML = '';
@@ -237,7 +204,7 @@ function users_rate_page() {
             var edituser = document.getElementsByClassName('edit_user');
             for(var i = 0 ; i < delbtns.length ; i++) {
                 delbtns[i].addEventListener('click' , function(){
-                    del_user(delbtns[i])
+                    del_user(this.id);
                 });
             }
             for (var i = 0 ; i < edituser.length ; i++){
@@ -276,7 +243,7 @@ function teacher_rate_page() {
     var XHR = new XMLHttpRequest();
     XHR.onreadystatechange = function() {
         if(XHR.readyState==4 && XHR.status==200) {
-
+            document.getElementById('main_work').innerHTML = XHR.responseText;
         }
     }
     XHR.open('POST' , '/load_teacher');
@@ -284,6 +251,8 @@ function teacher_rate_page() {
 }
 
 function del_user(id) {
+    console.log(id);
+    
     var XHR = new XMLHttpRequest();
     XHR.onreadystatechange = function() {
         if(XHR.readyState==4 && XHR.status==200) {
@@ -295,5 +264,9 @@ function del_user(id) {
     XHR.open('POST','/del_user');
     XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    XHR.send();
+    XHR.send('id='+id);
+}
+
+function edit_teacher() {
+    
 }

@@ -1,0 +1,47 @@
+<table class="table">
+	<tbody>
+		{% for row in records %}
+		<tr>
+			<td><input type="text" value=" {{row[1]}} "></td>
+			<td>
+				<select>
+					<option {% if row[2] == 0 %} selected {% endif %} value="0">Администратор</option>
+					<option {% if row[2] == 1 %} selected {% endif %} value="1">Методист</option>
+					<option {% if row[2] == 2 %} selected {% endif %} value="2">Преподаватель</option>
+				</select>
+			</td>
+			<td><div value="EDIT" id={{ row[0] }} class="edit_user button d-flex align-items-center justify-content-center">Редактировать</div></td>
+			<td><div value="DELETE" id={{ row[0] }} class="del_user button d-flex align-items-center justify-content-center">Удалить</div></td> 
+		</tr> 
+		{% endfor %}
+	</tbody>
+</table>
+<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">Добавить пользователя</button>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel2">Добавление пользователя</h4>
+    </div>
+    <div class="modal-body">
+    <form name="reg">
+      <input type="text" name="login" id=login autocomplete="false">
+      <input type="password" name="password" id=password autocomplete="false">
+      <br>
+      <select name="priv">
+      	<option value="1">Методист</option>
+      	<option value="2">Преподаватель</option>
+      </select>
+     </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn button" data-dismiss="modal">Закрыть</button>
+      <button type="button" class="btn button" data-dismiss="modal" id="send_data_user">Сохранить</button>
+    </div>
+
+  </div>
+</div>
+</div>

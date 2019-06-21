@@ -1,13 +1,16 @@
 function showrate(data) {
     // console.log(data['inds_name']);
     document.getElementById('main_work').innerHTML = '';
-    var date_set = new Set(data['seasons']);
+    // var date_set = new Set(dat);
     console.log(data);
+    // console.log(date_set);
     var html = '<h2>'+data['teacher']+'</h2>\n';
         html +='<div id="info_rate"></div>';
     var table = "<table class='table'>";
         table+= "<tbody>";
         for (var i = 0 ; i < data['data'].length; i++) {
+            console.log(data['data'][i]);
+            
             table+= '<tr>';
             for (var j = 0 ; j < data['data'][i].length ; j++) {
                 table+= '<td>'+data['data'][i][j] + '</td>';

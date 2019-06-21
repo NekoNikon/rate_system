@@ -1,5 +1,6 @@
 from flask import Blueprint , render_template ,request ,jsonify
 from app.database.smdb import DataManager
+from app import teachers
 
 dm = DataManager()
 users_module = Blueprint('MP' ,__name__)
@@ -21,9 +22,15 @@ def add_user():
         }
         return jsonify(d)
 
-@users_module.route('/del_user',methods=['GET','POST'])
+@users_module.route('/del_user' ,methods=['GET','POST'])
 def del_user():
     if request.method=='POST':
-        data = request.values
+        data = request.values['id']
+        dm.DelUser(int(data))
     d = {'d':True}
     return jsonify(d)
+
+@users_module.route('/load_teacher' , methods=['GET','POST'])
+def load_teacher():
+        teacher_list = teachers.query.all()
+        return render_template('list_teachers.html' , teachers=teacher_list)

@@ -69,7 +69,7 @@ class QF():
                     AND
                         rate.rate_indicator_id = indicator.indicator_id
                     AND
-                        indicator.indicator_group_id = indicator_group.indicator_group_id'''.format(iin)
+                        indicator.indicator_group_id = indicator_group.indicator_group_id ORDER BY season_date DESC'''.format(iin)
 
     def get_teachers_and_rate_value_by_manager_teachers(self , id_mp  ,id_season):
     	return '''

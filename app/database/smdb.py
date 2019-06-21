@@ -309,4 +309,9 @@ class DataManager():
         curs = conn.cursor()
         curs.execute('''DELETE from indicator WHERE indicator_id = %i ''' % id)
         conn.commit()
-        curs.execute('''SELECT ''')
+
+    def DelUser(self , id):
+        conn = psql.connect(dsn)
+        curs = conn.cursor()
+        curs.execute('''DELETE from manage_persons WHERE manage_persons_id = %i''' % id)
+        conn.commit()

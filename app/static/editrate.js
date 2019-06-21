@@ -20,9 +20,9 @@ function render_rate(data) {
     for(var i = 0 ; i<arr.length; i++) {
         // arr[i].innerHTML += '<tbody>';
         for(var j = 0 ; j<data['inds'].length; j++) {
-            str += '<tr id='+ data['inds'][j][0] +'><td><h3>'+data['inds'][j][1]+'</h3></td>';
+            str += '<tr id='+ data['inds'][j][0] +'><td><h7>'+data['inds'][j][1]+'</h7></td>';
             str += '<td><input id="in'+data['inds'][j][0]+'_'+arr[i].id+'" type="text" value="0" placeholder="0"</td>';
-            str += '<td><input id="b'+data['inds'][j][0]+'_'+arr[i].id+'" data-ind='+data['inds'][j][0]+' class="btn btn-primary addrate" type="button" value="save"</td>'+'</tr>';
+            str += '<td><div id="b'+data['inds'][j][0]+'_'+arr[i].id+'" data-ind='+data['inds'][j][0]+' class="button addrate d-flex align-items-center">Сохранить</div></td>'+'</tr>';
         }
         arr[i].innerHTML  = str;
         str ='';

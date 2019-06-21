@@ -6,13 +6,13 @@ main = Blueprint('main' , __name__  , static_folder='static')
 
 @main.route('/', methods=['GET','POST'])
 def index():
-    session['username'] = 'admin'
-    session['priv'] = 0
+#     session['username'] = 'admin'
+#     session['priv'] = 0
     # rec = rate.query.all()
     # print(rec)
     # for row in rec:
     #     print(row.id)
-    # session.pop('username' ,None)
+#     session.pop('username' ,None)
     response = { 'is_login': False }
     if request.method=='POST':
         if 'username' in session:
