@@ -1,9 +1,43 @@
-function render_rate(data) {
+function show_rates_by_season(data) {
     // var intable = '<tbody>';
     //     intable+= '</tbody>';
+    console.log(data);
     document.getElementById('main_work').innerHTML ='';
     window.current_teaher = data['teacher_id'];
     document.getElementById('teacher_name').innerText = data['teacher'];
+    var val = data['seasons'];
+    var rate = data['res'];
+    console.log(rate);
+    
+    // var cell_input = '<td><input type="text" placeholder="0"></td><td><input class="btn btn-primary" type="button" value="add"></td>';
+    var arr = [];
+    // console.log(val);
+    for(var i = 0; i<val.length ;i++) {
+        // console.log(val[i][0]);
+        arr[i] = document.getElementById(val[i][0]);
+    }
+    str ='';
+    value = 0;
+    for(var i = 0 ; i<arr.length; i++) {
+        // arr[i].innerHTML += '<tbody>';
+        for(var j = 0 ; j<data['inds'].length; j++) {
+            str += '<tr id='+ data['inds'][j][0] +'><td><h7>'+data['inds'][j][1]+'</h7></td>';
+            str += '<td><input disabled id="in'+data['inds'][j][0]+'_'+arr[i].id+'" type="text" value="0" placeholder="0"</td>';
+            str += '</tr>';
+        }
+        arr[i].innerHTML  = str;
+        str ='';
+        // arr[i].innerHTML += '</tbody>';
+    }
+}
+
+function render_rate(data) {
+    // var intable = '<tbody>';
+    //     intable+= '</tbody>';
+    console.log(data);
+    document.getElementById('main_work').innerHTML ='';
+    window.current_teaher = data['teacher_id'];
+    document.getElementById('teacher_name').innerHTML = data['teacher'];
     var val = data['seasons'];
     var rate = data['res'];
     console.log(rate);
@@ -31,7 +65,6 @@ function render_rate(data) {
     for (var i = 0 ; i < arr.length ; i++) {
         for(var j = 0 ; j < rate[i].length ; j++) {
             document.getElementById('in'+rate[i][j][0]+'_'+arr[i].id).setAttribute('value' , rate[i][j][1]);
-            console.log(rate[i][j][0]);
         }
     }
     var add = document.getElementsByClassName('addrate');

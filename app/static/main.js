@@ -102,11 +102,13 @@ function ajaxGet() {
 function searchTeacher() {
     var code = document.getElementById('code');
     var XHR = new XMLHttpRequest();
+    pre_load_rates();
     XHR.onreadystatechange = function() {
         if (XHR.readyState==4 && XHR.status==200) {
             // document.getElementById('main').innerHTML = XHR.responseText;
             console.log(JSON.parse(XHR.responseText));
-            showrate(JSON.parse(XHR.responseText));
+            
+            show_rates_by_season(JSON.parse(XHR.responseText));
         }
     }
     XHR.open('POST' , '/view_rate');
@@ -160,7 +162,7 @@ function edit_rate_page() {
                 editteacher[i].addEventListener('click' , load_rates , editteacher[i].id);
         }
     }
-    XHR.open('POST' , 'edit_rate_page')
+    XHR.open('POST' , '/edit_rate_page')
     XHR.send()
 }
 

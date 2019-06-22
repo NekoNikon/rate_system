@@ -1,5 +1,5 @@
 from flask import Blueprint , jsonify , redirect , url_for  , request ,render_template
-from app import session ,  rate
+from app import session ,  rate , mp as users_data
 from app.main.mp import getpage
 
 main = Blueprint('main' , __name__  , static_folder='static')
@@ -36,7 +36,9 @@ def guest():
 
 @main.route('/load_user/<user>', methods=['GET' , 'POST'])
 def load_user(user):
-        return '''<h1>User logged - %s</h1>''' % user
+    name = users_data.query.filter_by(login=user).first()
+    print(name)
+    return '''<h1>Пользователь - %s</h1>''' % name.name
 
 
 @main.route('/load_side' , methods=['GET','POST'])

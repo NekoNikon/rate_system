@@ -43,7 +43,9 @@ class teachers(data_app.Model):
     __tablename__ = 'teachers'
     id = data_app.Column('teachers_id', data_app.Integer, primary_key=True)
     code = data_app.Column('teachers_iin', data_app.String(4), unique=True, nullable=False)
-    name = data_app.Column('teachers_second_name', data_app.String, nullable=False)
+    s_name = data_app.Column('teachers_second_name', data_app.String, nullable=False)
+    f_name = data_app.Column('teachers_first_name' , data_app.String, nullable=False)
+    t_name = data_app.Column('teachers_third_name' , data_app.String, nullable=False)
     # tr = data_app.relationship('rate' , backref='teachers',lazy=True)
     # group = data_app.Column('teachers_group', data_app.Integer, data_app.ForeignKey('group_teacher.id'), nullable=False)
 
@@ -57,6 +59,7 @@ class mp(data_app.Model):
     login = data_app.Column('manage_persons_login',data_app.String(50), unique=True, nullable=False)
     hash = data_app.Column('manage_persons_password',data_app.String, nullable=False)
     priv = data_app.Column('manage_persons_priv_value', data_app.Integer, nullable=False)
+    name = data_app.Column('manage_persons_name' , data_app.String , nullable=False)
 
 from app.main import main as main_bp
 app.register_blueprint(main_bp , url_prefix='/')

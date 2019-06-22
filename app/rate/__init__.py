@@ -6,19 +6,29 @@ dm = DataManager()
 
 rate_module = Blueprint('rate_module' ,__name__ )
 
+@rate_module.route('/pre_view_rate', methods=['GET','POST'])
+def pre_view_rate():
+    count = dm.GetSeasonsId()
+    return render_template('rate_tables.html' , count=count)
+
+
 @rate_module.route('/view_rate', methods=['GET' , 'POST'])
 def view_rate():
     if request.method=='POST':
         ret = {}
-        sub_ret={'ind':str() , 'value':float(), 'date':str()}
-        # data = rate.query.all()
         teacher = teachers.query.filter_by(code=request.values['code']).first()
         data = rate.query.filter_by(teacher_id=teacher.id)
         i = dm.GetTeacherRateByIin(request.values['code'])
+        res = dm.GetRateByTeacher(int(teacher.id))
+        rates = dm.GetRateByTeacher(teacher.id)
+        inds = dm.GetInds()
+        seasons = dm.GetSeasonsId()
         # inds = indicator.query.join(rate , rate.indicator_id==indicator.id)
-        print(teacher.name)
-        ret['teacher'] = teacher.name
-        ret['data'] = i
+        ret['teacher'] = '%s %s %s' % (teacher.s_name , teacher.f_name , teacher.t_name) 
+        ret['teacher_id'] = teacher.id
+        ret['seasons'] = seasons
+        ret['inds'] = inds
+        ret['res'] = res
         # for row in inds:
         #     pass
         f ={'a':1} 
@@ -36,7 +46,7 @@ def edit_rate_page():
         teacher_list = teachers.query.all()
         return render_template('edit_rate_page.html', teachers=teacher_list)
 
-@rate_module.route('preloadrates' , methods=['GET','POST'])
+@rate_module.route('/preloadrates' , methods=['GET','POST'])
 def preloadrates():
     if request.method=='POST':
         count = dm.GetSeasonsId()
@@ -51,7 +61,7 @@ def load_rates():
         inds = dm.GetInds()
         res = dm.GetRateByTeacher(int(code))
         ret = {}
-        ret['teacher'] = teacher.name
+        ret['teacher'] = '%s %s %s' % (teacher.s_name , teacher.f_name , teacher.t_name) 
         ret['teacher_id'] = teacher.id
         ret['seasons'] = seasons
         ret['inds'] = inds

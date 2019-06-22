@@ -7,7 +7,7 @@
 	<tbody>
 		{% for row in teachers %}
 		<tr>
-			<td> {{ row.name }} </td>
+			<td> {{ row.s_name }} {{ row.f_name }} {{ row.t_name }} </td>
 			<td> <a name='edit[]' class="button btn-edit" id={{ row.id }} >Редактировать</a> </td>
 		</tr>
 		{% endfor %}
