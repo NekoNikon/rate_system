@@ -49,6 +49,11 @@ function show_rates_by_season(data) {
         arr[i].innerHTML  = str;
         str ='';
         // arr[i].innerHTML += '</tbody>';
+        for (var i = 0 ; i < arr.length ; i++) {
+            for(var j = 0 ; j < rate[i].length ; j++) {
+                document.getElementById('in'+rate[i][j][0]+'_'+arr[i].id).setAttribute('value' , rate[i][j][1]);
+            }
+        }
     }
 }
 

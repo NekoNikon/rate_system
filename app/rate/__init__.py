@@ -87,6 +87,7 @@ def addrate():
         dm.AddRate(int(data['season']),int(data['ind']) ,int(data['teacher']) ,int(data['val']))
         return jsonify(d)
 
+# @rate_module.route('/add_seaon' , methods=['GET','POST'])
 def add_seaon():
     new = season(date.today())
     data_app.session.add(new)

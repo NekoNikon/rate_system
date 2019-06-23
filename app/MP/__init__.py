@@ -46,6 +46,9 @@ def add_user():
         }
         return jsonify(d)
 
+
+    
+
 @users_module.route('/del_user' ,methods=['GET','POST'])
 def del_user():
     if request.method=='POST':
@@ -58,6 +61,17 @@ def del_user():
 def load_teacher():
     teacher_list = teachers.query.all()
     return render_template('list_teachers.html' , teachers=teacher_list)
+
+@users_module.route('/add_head', methods=['GET','POST'])
+def add_head():
+    code = ''
+    for i in range(4):
+        code += str(int(round(random.random(),1)*10)) 
+    # print(int(round(random.random(),1)*10))
+    print(code)
+    data = request.values
+    dm.AddHead(data['sname'] , data['fname'], data['tname'], data['tg'] ,code)
+    return jsonify({'add':True})
 
 @users_module.route('/add_teacher', methods=['GET','POST'])
 def add_teacher():

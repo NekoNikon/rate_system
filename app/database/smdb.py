@@ -328,6 +328,16 @@ class DataManager():
         curs.execute('''DELETE from manage_persons WHERE manage_persons_id = %i''' % id)
         conn.commit()
     
+    # def AddHead(self,s,f,t,tg,c):
+    #     conn = psql.connect(dsn)
+    #     curs = conn.cursor()
+    #     curs.execute('''
+    #         INSERT INTO teachers(teachers_second_name , teachers_first_name , teachers_third_name , teachers_iin, teachere_tg_id )
+    #         VALUES ('%s' , '%s' , '%s' , '%s') 
+    #     ''' % (s , f , t ,c))
+    #     conn.commit()
+        
+
     def AddTeacher(self,s , f ,t ,c):
         conn = psql.connect(dsn)
         curs = conn.cursor()

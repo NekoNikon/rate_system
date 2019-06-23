@@ -105,6 +105,23 @@ function ajaxGet() {
     XHR.send();
 }
 
+function is_head(code) {
+    var XHR = new XMLHttpRequest();
+    XHR.onreadystatechange =function() {
+        if (XHR.readyState==4 && XHR.status==200) {
+            var res = JSON.parse(XHR.responseText);
+            if(res['is_head'] == true) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    XHR.open('POST','/is_head');
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    XHR.send('code='+code);
+}
 
 function searchTeacher() {
     document.getElementById('wait').style.display='block';
@@ -116,8 +133,12 @@ function searchTeacher() {
             document.getElementById('wait').style.display='none';
             // document.getElementById('main').innerHTML = XHR.responseText;
             console.log(JSON.parse(XHR.responseText));
-            
-            show_rates_by_season(JSON.parse(XHR.responseText));
+            if(is_head(code)) {
+                show_rate_for_head();
+            }
+            else {
+                show_rates_by_season(JSON.parse(XHR.responseText));
+            }
         }
     }
     XHR.open('POST' , '/view_rate');
@@ -321,6 +342,22 @@ function teacher_rate_page() {
     XHR.send();
 }
 
+function add_head() {
+    var XHR = new XMLHttpRequest();
+    XHR.onreadystatechange = function() {
+        if(XHR.readyState==4 && XHR.status==200) {
+            teacher_rate_page();
+        }
+    }
+    XHR.open('POST', '/add_head');
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var sname  = document.getElementById('as_name').value;
+    var fname  = document.getElementById('af_name').value;
+    var tname  = document.getElementById('at_name').value;
+    var tgname = document.getElementById('tg_name').value;
+    XHR.send('sname='+sname+'&fname='+fname+'&tname='+tname+'&tg='+tgname);
+}
+
 function add_teacher() {
     var XHR = new XMLHttpRequest();
     XHR.onreadystatechange = function() {
@@ -334,6 +371,7 @@ function add_teacher() {
     var fname  = document.getElementById('af_name').value;
     var tname  = document.getElementById('at_name').value;
     XHR.send('sname='+sname+'&fname='+fname+'&tname='+tname);
+    
 }
 
 function del_teacher_list(id) {

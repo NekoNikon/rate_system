@@ -1,5 +1,9 @@
 <div>
-	<div data-toggle="modal" data-target=".bs-example-modal-md" class="button btn d-flex align-items-center justify-content-center "><h4>Добавить преподавателя</h4></div>
+	<div class="row">
+			<div data-toggle="modal" data-target=".bs-example-modal-md" class="button btn  d-flex align-items-center justify-content-center "><h4>Добавить преподавателя</h4></div>
+			<!-- <div data-toggle="modal" data-target=".bs-head-modal-md" class="button btn col-xs-6 col-sm-6 col-ms-6 col-lg-6 d-flex  align-items-center justify-content-center "><h4>Добавить заведующего</h4></div> -->
+	</div>
+	
 	<table class="table">
 		<tbody>
 			{% for row in teachers %}
@@ -51,13 +55,6 @@
 			  <input type="text" id="af_name" placeholder="Имя">
 			  <input type="text" id="at_name" placeholder="Отчество">
 			  <br>
-			  <div class="h-checkbox">
-					<input type="checkbox" class="checkbox" id="checkbox" />
-					<label class="text text-dark" for="checkbox">Заведующий</label>
-
-				</div>
-			  <select name="group_teacher">
-			  </select>
 			 </form>
 			</div>
 			<div class="modal-footer">
@@ -68,3 +65,30 @@
 		  </div>
 		</div>
 		</div>
+
+		<div class="modal fade bs-head-modal-md" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog modal-sm">
+				  <div class="modal-content">
+				
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+					  </button>
+					  <h4 class="modal-title" id="myModalLabel2">Добавление заведующего</h4>
+					</div>
+					<div class="modal-body">
+					<form name="reg">
+					  <input type="text" id="as_name" placeholder="Фамилия">
+					  <input type="text" id="af_name" placeholder="Имя">
+					  <input type="text" id="at_name" placeholder="Отчество">
+					  <input type="text" id="tg_name" placeholder="Отделение">
+					  <br>
+					 </form>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn button" data-dismiss="modal">Закрыть</button>
+					  <button type="button" id="add_teacher" class="btn button" data-dismiss="modal" id="send_data_user">Сохранить</button>
+					</div>
+				
+				  </div>
+				</div>
+				</div>
