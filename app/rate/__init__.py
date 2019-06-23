@@ -1,6 +1,7 @@
 from flask import Blueprint  , render_template, jsonify , json
-from app import  mp , teachers , request , rate , indicator,season
+from app import  mp , teachers , request , rate , indicator,season ,data_app
 from app.database.smdb import DataManager
+from datetime import datetime,date
 
 dm = DataManager()
 
@@ -52,6 +53,14 @@ def preloadrates():
         count = dm.GetSeasonsId()
         return render_template('rate_tables.html' , count=count)
 
+@rate_module.route('/summrate' , methods=['GET','POST'])
+def summrate():
+        summ = {}
+        summ['summ'] = dm.GetSummRateByTeacher(int(request.values['id']))
+        summ['avg'] = dm.GetAvg(int(request.values['id']))
+        return jsonify(summ)
+
+
 @rate_module.route('/load_rates' , methods=['GET' , 'POST'])
 def load_rates():
     if request.method=='POST':
@@ -77,3 +86,9 @@ def addrate():
         d = {'add':True}
         dm.AddRate(int(data['season']),int(data['ind']) ,int(data['teacher']) ,int(data['val']))
         return jsonify(d)
+
+def add_seaon():
+    new = season(date.today())
+    data_app.session.add(new)
+    data_app.session.commit() 
+    return jsonify({'add':True})      

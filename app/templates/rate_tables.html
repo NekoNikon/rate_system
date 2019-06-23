@@ -1,5 +1,7 @@
 <div class="result">
 	<h1 class="green text" id="teacher_name"></h1>
+	<h3 id="summ"></h3>
+	<h3 id="avg"></h3>
 	{% for row in count %}
 	<h3 class="red text">{{ row[1] }}</h3>
 	<table class="table table-striped" id={{ row[0] }}><tbody></tbody></table>

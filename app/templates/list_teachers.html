@@ -1,20 +1,70 @@
-<table class="table">
-	<tbody>
-		{% for row in teachers %}
-		<tr>
-			<td> {{ row.name }} </td>
-			<td> 
-
-			<div class="d-flex justify-content-center">
-
-				<div name='edit[]' class="button edit_teacher d-flex align-items-center justify-content-center" id={{ row.id }} >Редактировать</div>
-
-				<div name='edit[]' class="button edit_teacher d-flex align-items-center justify-content-center" id={{ row.id }} >Удалить</div>
-
+<div>
+	<div data-toggle="modal" data-target=".bs-example-modal-md" class="button btn d-flex align-items-center justify-content-center "><h4>Добавить преподавателя</h4></div>
+	<table class="table">
+		<tbody>
+			{% for row in teachers %}
+			<tr>
+				<td> 
+					<input id='sn{{row.id}}' value={{ row.s_name }} type="text">
+				</td>
+				<td>
+					<input id='fn{{row.id}}' type="text" value= {{ row.f_name }}>
+				</td>
+				<td>
+					<input id='tn{{row.id}}' type="text" value= {{ row.t_name }}>
+				</td>
+				<td>
+					<input id='tcode{{row.id}}' type="text" value={{ row.code }}>
+				</td>
+				<td>
+					<input id='group{{row.id}}' type='text' value="Отделение">
+				</td>
+				<td> 
+	
+				<div class="d-flex justify-content-center">
+	
+					<div  class="button edit_teacher d-flex align-items-center justify-content-center" id={{ row.id }} >Сохранить</div>
+	
+					<div  class="button del_teacher d-flex align-items-center justify-content-center" id={{ row.id }} >Удалить</div>
+	
+				</div>
+	
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+</div>
+<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+		<div class="modal-dialog modal-sm">
+		  <div class="modal-content">
+		
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+			  </button>
+			  <h4 class="modal-title" id="myModalLabel2">Добавление пользователя</h4>
 			</div>
+			<div class="modal-body">
+			<form name="reg">
+			  <input type="text" id="as_name" placeholder="Фамилия">
+			  <input type="text" id="af_name" placeholder="Имя">
+			  <input type="text" id="at_name" placeholder="Отчество">
+			  <br>
+			  <div class="h-checkbox">
+					<input type="checkbox" class="checkbox" id="checkbox" />
+					<label class="text text-dark" for="checkbox">Заведующий</label>
 
-			</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+				</div>
+			  <select name="group_teacher">
+			  </select>
+			 </form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn button" data-dismiss="modal">Закрыть</button>
+			  <button type="button" id="add_teacher" class="btn button" data-dismiss="modal" id="send_data_user">Сохранить</button>
+			</div>
+		
+		  </div>
+		</div>
+		</div>

@@ -8,20 +8,22 @@ class QF():
                 '''
 
 
-    def add_user_in_manage_persons(self , log , pswd , prvg):
+    def add_user_in_manage_persons(self , log , pswd , prvg , name):
         return '''
             INSERT INTO
                 manage_persons(
                     manage_persons_login ,
                     manage_persons_password ,
-                    manage_persons_priv_value
+                    manage_persons_priv_value,
+                    manage_persons_name
                 )
                 VALUES (
                     '%s' ,
                     '%s' ,
+                    '%s' ,
                     '%s'
                 )
-        ''' % (log , pswd , prvg)
+        ''' % (log , pswd , prvg , name)
 
     def add_rate(self ,ids,idi,idt,val):
         return '''

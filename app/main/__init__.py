@@ -1,18 +1,24 @@
 from flask import Blueprint , jsonify , redirect , url_for  , request ,render_template
-from app import session ,  rate , mp as users_data
+from app import session , season, data_app, rate , mp as users_data 
 from app.main.mp import getpage
+from datetime import datetime , date 
+from app.rate import add_seaon
 
 main = Blueprint('main' , __name__  , static_folder='static')
 
 @main.route('/', methods=['GET','POST'])
 def index():
-#     session['username'] = 'admin'
-#     session['priv'] = 0
-    # rec = rate.query.all()
-    # print(rec)
-    # for row in rec:
-    #     print(row.id)
-#     session.pop('username' ,None)
+    last = season.query.order_by(season.date.desc()).first()
+    print(last.date.month)
+    now = date.today()
+    
+    print(now.month)
+    if now == last.date:
+        print('семестр существует')
+    elif now.month == 6 or now.month == 1:
+        if now.day == 30:
+            add_seaon()
+
     response = { 'is_login': False }
     if request.method=='POST':
         if 'username' in session:

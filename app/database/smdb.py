@@ -123,7 +123,7 @@ class DataManager():
             return False
 
 
-    def AddUser(self ,login , password , privileges):
+    def AddUser(self ,login , password , privileges , name):
         conn = psql.connect(dsn)
         curs = conn.cursor()
         if  self.user_is_exist(login):
@@ -134,7 +134,7 @@ class DataManager():
             print('user is not exist')
         #     add user
             h_password = ph.hash(password)
-            curs.execute(qf.add_user_in_manage_persons(login,h_password,privileges))
+            curs.execute(qf.add_user_in_manage_persons(login,h_password,privileges , name))
             conn.commit()
 # working //////////////////////////////////////////////////////////////////////////////////////////
     def GetIDTeacherByIIN(self , iin):
@@ -282,6 +282,7 @@ class DataManager():
         curs.execute('''
             SELECT 
                 manage_persons_id,
+                manage_persons_name,
                 manage_persons_login,
                 manage_persons_priv_value
             FROM manage_persons
@@ -310,8 +311,57 @@ class DataManager():
         curs.execute('''DELETE from indicator WHERE indicator_id = %i ''' % id)
         conn.commit()
 
+    def EditUser(self , l , n  , i):
+        conn = psql.connect(dsn)
+        curs = conn.cursor()
+        curs.execute('''
+            UPDATE manage_persons SET
+                manage_persons_name = '%(name)s' ,
+                manage_persons_login = '%(login)s'
+                WHERE manage_persons_id = %(id)i
+        ''' % {'login':l , 'name':n , 'id':i} )
+        conn.commit()
+
     def DelUser(self , id):
         conn = psql.connect(dsn)
         curs = conn.cursor()
         curs.execute('''DELETE from manage_persons WHERE manage_persons_id = %i''' % id)
         conn.commit()
+    
+    def AddTeacher(self,s , f ,t ,c):
+        conn = psql.connect(dsn)
+        curs = conn.cursor()
+        curs.execute('''
+            INSERT INTO teachers(teachers_second_name , teachers_first_name , teachers_third_name , teachers_iin)
+            VALUES ('%s' , '%s' , '%s' , '%s') 
+        ''' % (s , f , t ,c))
+        conn.commit()
+
+    def DelTeacher(self , id):
+        conn = psql.connect(dsn)
+        curs = conn.cursor()
+        curs.execute('''DELETE from teachers WHERE teachers_id = %i''' % id)
+        conn.commit()
+    
+    def EditTeacher(self ,i, s ,f, t,c):
+        conn = psql.connect(dsn)
+        curs = conn.cursor()
+        curs.execute('''
+            UPDATE teachers SET
+                teachers_second_name = '%(sn)s' ,
+                teachers_first_name = '%(fn)s' , 
+                teachers_third_name = '%(tn)s' , 
+                teachers_iin = '%(code)s' 
+                WHERE teachers_id = %(id)i
+        ''' % {'id':i , 'sn':s , 'fn':f , 'tn':t , 'code':c} )
+        conn.commit()
+
+    def GetSummRateByTeacher(self,id):
+        curs = self.Connect()
+        curs.execute("SELECT sum(rate_value) FROM rate WHERE rate_teacher_id = %i" % id)
+        return curs.fetchall()
+
+    def GetAvg(self,id):
+        curs = self.Connect()
+        curs.execute("SELECT avg(rate_value) FROM rate WHERE rate_teacher_id = %i" % id)
+        return curs.fetchall()

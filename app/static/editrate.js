@@ -1,8 +1,29 @@
+function getsumm(data) 
+{
+    console.log('main???');
+    var XHR = new XMLHttpRequest();
+    XHR.onreadystatechange = function() {
+        if(XHR.readyState==4 && XHR.status==200) {
+            var av =  JSON.parse(XHR.responseText)['avg'];
+            av=parseFloat(av);
+            document.getElementById('summ').innerHTML= 'Сумма рейтинга: ' + JSON.parse(XHR.responseText)['summ']+' баллов';
+            document.getElementById('avg').innerHTML= 'Средний рейтинг: ' + av.toFixed(1)+' баллов';
+            // alert(res);
+            // return res;
+        }
+    }
+    XHR.open('POST' , '/summrate');
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    XHR.send('id='+data['teacher_id']);
+}
+
 function show_rates_by_season(data) {
     // var intable = '<tbody>';
     //     intable+= '</tbody>';
-    console.log(data);
-    document.getElementById('main_work').innerHTML ='';
+    getsumm(data);
+    
+    // alert(res);
+
     window.current_teaher = data['teacher_id'];
     document.getElementById('teacher_name').innerText = data['teacher'];
     var val = data['seasons'];
@@ -21,7 +42,7 @@ function show_rates_by_season(data) {
     for(var i = 0 ; i<arr.length; i++) {
         // arr[i].innerHTML += '<tbody>';
         for(var j = 0 ; j<data['inds'].length; j++) {
-            str += '<tr id='+ data['inds'][j][0] +'><td><h7>'+data['inds'][j][1]+'</h7></td>';
+            str += '<tr id='+ data['inds'][j][0] +'><td><h6>'+data['inds'][j][1]+'</h6></td>';
             str += '<td><input disabled id="in'+data['inds'][j][0]+'_'+arr[i].id+'" type="text" value="0" placeholder="0"</td>';
             str += '</tr>';
         }
@@ -35,7 +56,8 @@ function render_rate(data) {
     // var intable = '<tbody>';
     //     intable+= '</tbody>';
     console.log(data);
-    document.getElementById('main_work').innerHTML ='';
+    getsumm(data);
+    // document.getElementById('main_work').innerHTML ='';
     window.current_teaher = data['teacher_id'];
     document.getElementById('teacher_name').innerHTML = data['teacher'];
     var val = data['seasons'];
@@ -54,7 +76,7 @@ function render_rate(data) {
     for(var i = 0 ; i<arr.length; i++) {
         // arr[i].innerHTML += '<tbody>';
         for(var j = 0 ; j<data['inds'].length; j++) {
-            str += '<tr id='+ data['inds'][j][0] +'><td><h7>'+data['inds'][j][1]+'</h7></td>';
+            str += '<tr id='+ data['inds'][j][0] +'><td><h6>'+data['inds'][j][1]+'</h6></td>';
             str += '<td><input id="in'+data['inds'][j][0]+'_'+arr[i].id+'" type="text" value="0" placeholder="0"</td>';
             str += '<td><div id="b'+data['inds'][j][0]+'_'+arr[i].id+'" data-ind='+data['inds'][j][0]+' class="button addrate d-flex align-items-center">Сохранить</div></td>'+'</tr>';
         }
@@ -89,6 +111,9 @@ function addrate(el) {
     XHR.onreadystatechange = function() {
         if(XHR.readyState==4 && XHR.status==200) {
             console.log(JSON.parse(XHR.responseText));
+            var data = {};
+            data['teacher_id'] = window.current_teaher;
+            getsumm(data);
         }
     }
     XHR.open('POST','/addrate');

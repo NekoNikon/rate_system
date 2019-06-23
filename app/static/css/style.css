@@ -2,6 +2,22 @@
     color: #666;
 }
 
+#wait {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    font-family: "Roboto-Light";
+    color: #fff;
+    border-radius: 10px;
+    background-color:rgba(14, 144, 251, 0.76);
+    align-items: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.424);
+    transition: all 0.3s ease;
+    padding: 30px 30px;
+}
+
 ::selection {
     background-color: $accent;
     color: #fff;
@@ -40,10 +56,9 @@ input[type="text"],
 input[type="password"],
 select {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    padding: 10px 20px;
+    width: 400px;
+    padding: 5px 5px;
     border-radius: 10px;
-    border: none;
     color: #333336;
     margin-bottom: 15px;
     font-family: "Roboto-Light";
@@ -449,7 +464,7 @@ p::-webkit-scrollbar-thumb {
 
 .table tbody tr td .button{
     color:#fff;
-    padding: 10px 50px;
+    padding: 5px 20px;
     margin-left:10px;
 }
 
@@ -492,7 +507,7 @@ p::-webkit-scrollbar-thumb {
 .table tbody tr td input{
     margin:0;
     box-shadow: none;
-    width: 100px;
+    width: auto;
    flex-shrink: 0;
 }
 
